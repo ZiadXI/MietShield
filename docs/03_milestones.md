@@ -3,10 +3,10 @@
 A phased plan to build MietShield without getting overwhelmed.
 
 ## Phase 1 — Foundation
-- [ ] Set up project structure (backend + frontend folders)
-- [ ] Get FastAPI running with a health check endpoint
-- [ ] Connect to OpenRouter and verify LLM responds
-- [ ] Create the German tenant law knowledge base (markdown)
+- [x] Set up project structure (backend + frontend folders)
+- [x] Get FastAPI running with a health check endpoint
+- [x] Connect to OpenRouter and verify LLM responds
+- [x] Create the German tenant law knowledge base (markdown)
 
 ## Phase 2 — LangGraph Core
 - [ ] Define the AgentState
