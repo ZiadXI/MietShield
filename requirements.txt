@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+langgraph
+langchain-core
+langchain-openai
+langchain-community
+faiss-cpu
+pymupdf
+python-multipart
+pydantic

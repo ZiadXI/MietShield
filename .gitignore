@@ -27,3 +27,6 @@ desktop.ini
 # Project specific
 *.pdf
 uploads/
+
+*.ipynb
+
