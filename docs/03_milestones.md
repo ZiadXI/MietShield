@@ -9,13 +9,13 @@ A phased plan to build MietShield without getting overwhelmed.
 - [x] Create the German tenant law knowledge base (markdown)
 
 ## Phase 2 — LangGraph Core
-- [ ] Define the AgentState
-- [ ] Build the graph with all nodes
-- [ ] Get the Q&A agent working end-to-end (question → answer with sources)
+- [x] Define the AgentState (still not end-to-end)
+- [x] Build the graph with all nodes (still not end-to-end)
+- [x] Get the Q&A agent working end-to-end (question → answer with sources) (still not the full logic)
 - [ ] Get the lease analyzer working end-to-end (text in → analysis out)
 
 ## Phase 3 — API Layer
-- [ ] Wire `/api/chat` endpoint to the LangGraph graph
+- [x] Wire `/api/chat` endpoint to the LangGraph graph
 - [ ] Wire `/api/analyze-lease` with PDF upload + parsing
 - [ ] Test both endpoints with curl / Postman
 
