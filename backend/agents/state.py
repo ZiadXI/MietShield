@@ -59,8 +59,12 @@ graph.add_edge("tools", "model_call")
 
 app = graph.compile()
 
-inputs = {"messages": [("user", "Homeowner told me he wants deposit equals to 5 month pay")]}
-result = app.invoke(inputs)
+def run_agent(message: str):
+    result = app.invoke({"messages": [("user", message)]})
+    return result["messages"][-1].content
 
-print("\n--- FINAL STATE ---")
-print(result["messages"][-1].content)
+
+print(run_agent("Homeowner told me he wants deposit equals to 5 month pay"))
+
+# conda deactivate
+# .\.venv\Scripts\Activate.ps1
