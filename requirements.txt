@@ -9,3 +9,4 @@ faiss-cpu
 pymupdf
 python-multipart
 pydantic
+pymupdf
