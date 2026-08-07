@@ -1,6 +1,7 @@
 # MietShield 🛡️
 
 > *Miet (rent) + Shield (protection)* — An AI-powered tenant rights assistant for Germany.
+
 ![MietShield Demo](assets/demo.png)
 
 **MietShield** helps tenants — especially international students and expats — understand their rights under German rental law (*Mietrecht*). It is powered by a multi-agent AI system built with **LangGraph** and served via **FastAPI**, with a zero-friction ChatGPT-style interface.
