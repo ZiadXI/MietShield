@@ -7,7 +7,7 @@ def analyze_lease(file_name:str,lease_text: str) -> LeaseAnalyzerResponse:
     llm = ChatOpenAI(
         openai_api_key=os.getenv("openai_api_key"),
         openai_api_base="https://openrouter.ai/api/v1",
-        model_name="openrouter/auto-beta",
+        model_name="google/gemini-2.0-flash-exp:free",
     )
     
     # 2. Bind the structured output schema
