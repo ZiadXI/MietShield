@@ -39,7 +39,7 @@ tools = [search_law]
 llm = ChatOpenAI(
     openai_api_key=os.getenv("openai_api_key"),
     openai_api_base="https://openrouter.ai/api/v1",
-    model_name="google/gemini-2.0-flash-exp:free",  # Fast model to avoid Vercel 10s timeout
+    model_name="meta-llama/llama-3.3-70b-instruct:free",  # Vercel timeout warning: If this model is too slow, Vercel will time out.
 ).bind_tools(tools)
 
 def model_call(state:AgentState)->AgentState:
