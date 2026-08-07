@@ -8,6 +8,10 @@ from langchain_core.messages import SystemMessage # Message for providing instru
 from langgraph.prebuilt import ToolNode
 from langchain_core.tools import tool
 from langgraph.prebuilt import tools_condition
+from backend.utils.pdf_parser import extract_text_from_pdf
+from backend.api.schemas import LeaseAnalyzerResponse
+from langgraph.checkpoint.sqlite import SqliteSaver
+import sqlite3
 
 
 from typing import Annotated
@@ -31,15 +35,28 @@ def search_law(state:AgentState):
     return law_text   
 
 tools = [search_law]
+
 llm = ChatOpenAI(
     openai_api_key=os.getenv("openai_api_key"),
     openai_api_base="https://openrouter.ai/api/v1",
-    model_name="openrouter/free"
-
+    model_name="openrouter/auto-beta",
 ).bind_tools(tools)
 
 def model_call(state:AgentState)->AgentState:
-      system_prompt = SystemMessage(content="You are a strict German Tenant Law AI. ALWAYS use the search_law tool before answering.")
+      prompt_text = """You are MietShield, a friendly, empathetic, and professional AI legal assistant specializing in German Tenant Law (Mietrecht).
+      
+Your goal is to help tenants understand their rights and protect them from unfair landlord practices.
+
+BEHAVIOR GUIDELINES:
+1. Tone: Be warm, empathetic, and conversational. If the user greets you or introduces themselves, greet them back warmly by name before diving into legal topics. Do not sound like a rigid robot.
+2. Tool Usage: If the user asks a specific question about German law (e.g., deposits, notice periods, pets, repairs), you MUST use the `search_law` tool to find the correct legal basis before answering.
+3. Casual Chat: If the user is just saying hello, asking how you are, or making small talk, DO NOT use the `search_law` tool. Just chat normally and warmly.
+4. Disclaimer: Occasionally remind users that you provide AI-assisted legal information, not formal legal representation.
+5. File Analysis: If the user attaches a lease document, you will receive a structured analysis of its clauses along with the full text. Incorporate this analysis into your response, explaining the key red flags to the user clearly. You do not need to restate the entire lease, just summarize the important legal risks and answer the user's specific question.
+
+Always format your responses cleanly using markdown (bullet points, bold text) to make complex legal concepts easy to read."""
+      
+      system_prompt = SystemMessage(content=prompt_text)
       response = llm.invoke([system_prompt]+state["messages"])
       return {"messages":response}
     
@@ -57,14 +74,23 @@ graph.add_conditional_edges("model_call", tools_condition)
 graph.add_edge("tools", "model_call")
 
 
-app = graph.compile()
+# Create or open the SQLite database file
+# PRODUCTION NOTE: SQLite is great for local prototyping. 
+# For true production with multiple concurrent users, replace SqliteSaver 
+# with a Postgres Checkpointer (e.g., PostgresSaver) to prevent database locks.
+conn = sqlite3.connect("chat_history.db", check_same_thread=False)
+memory = SqliteSaver(conn)
+# Compile the graph WITH memory
+app = graph.compile(checkpointer=memory)
 
-def run_agent(message: str):
-    result = app.invoke({"messages": [("user", message)]})
+# TODO: Inject lease analysis JSON into state when upload happens
+def run_agent(message: str, thread_id: str = "default_thread"):
+    # The config tells LangGraph which memory slot to read/write to
+    config = {"configurable": {"thread_id": thread_id}}
+    
+    result = app.invoke({"messages": [("user", message)]}, config=config)
     return result["messages"][-1].content
 
-
-print(run_agent("Homeowner told me he wants deposit equals to 5 month pay"))
 
 # conda deactivate
 # .\.venv\Scripts\Activate.ps1

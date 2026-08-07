@@ -1,32 +1,28 @@
 # Python
 __pycache__/
 *.py[cod]
-*.egg-info/
-dist/
-build/
-*.egg
-venv/
+*$py.class
+.pytest_cache/
+
+# Virtual Environments
 .venv/
+venv/
+ENV/
 env/
 
-# Environment
+# Databases
+*.db
+*.sqlite3
+chat_history.db
+
+# Environment variables
 .env
 .env.local
 
-# IDE
+# Uploads / Temp files
+uploads/
+*.pdf
+
+# IDEs
 .vscode/
 .idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Project specific
-*.pdf
-uploads/
-
-*.ipynb
-

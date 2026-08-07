@@ -1,14 +1,20 @@
+# Web Framework
 fastapi
 uvicorn[standard]
+python-multipart
+pydantic
+
+# Environment variables
 python-dotenv
+
+# AI & Graph Logic
 langgraph
+langgraph-checkpoint-sqlite
 langchain-core
 langchain-openai
 langchain-community
-faiss-cpu
+
+# Document Parsing
 pymupdf
-python-multipart
-pydantic
-pymupdf
-tesseract
 rapidocr-onnxruntime
+faiss-cpu

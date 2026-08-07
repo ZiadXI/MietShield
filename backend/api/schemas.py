@@ -2,8 +2,10 @@ from pydantic import BaseModel, Field
 from typing import Optional, List
 from typing import Literal
 
+
 class ChatRequest(BaseModel):
     message: str
+    thread_id: str = "default_thread"  # Sent by the frontend per chat session
 
 class ChatResponse(BaseModel):
     response: str
