@@ -1,8 +1,5 @@
 import fitz  # PyMuPDF
-from rapidocr_onnxruntime import RapidOCR
 
-# Initialize OCR engine once
-engine = RapidOCR()
 
 def extract_text_from_pdf(file_bytes: bytes) -> str:
     """
@@ -21,6 +18,8 @@ def extract_text_from_pdf(file_bytes: bytes) -> str:
                 
         # Step 2: If digital extraction failed, fall back to OCR
         if not full_text.strip():
+            from rapidocr_onnxruntime import RapidOCR  # Lazy import — only loads if needed
+            engine = RapidOCR()
             for page in doc:
                 pix = page.get_pixmap(dpi=300)
                 # Convert pixmap directly to bytes in memory (no disk file created)
