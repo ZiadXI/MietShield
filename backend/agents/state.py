@@ -78,7 +78,9 @@ graph.add_edge("tools", "model_call")
 # PRODUCTION NOTE: SQLite is great for local prototyping. 
 # For true production with multiple concurrent users, replace SqliteSaver 
 # with a Postgres Checkpointer (e.g., PostgresSaver) to prevent database locks.
-conn = sqlite3.connect("chat_history.db", check_same_thread=False)
+import os
+db_path = "/tmp/chat_history.db" if os.environ.get("VERCEL") else "chat_history.db"
+conn = sqlite3.connect(db_path, check_same_thread=False)
 memory = SqliteSaver(conn)
 # Compile the graph WITH memory
 app = graph.compile(checkpointer=memory)
