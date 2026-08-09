@@ -70,8 +70,24 @@ body {
 }
 
 .logo { display: flex; align-items: center; gap: 10px; padding: 4px; }
-.logo-icon { font-size: 1.4rem; }
-.logo-text { font-size: 1.15rem; font-weight: 700; color: var(--accent); }
+/* CSS Shield Logo */
+.css-logo-shield {
+  position: relative;
+  width: 28px; height: 34px;
+  background: linear-gradient(to bottom, #1a1a1a 33.3%, #d32f2f 33.3%, #d32f2f 66.6%, #fbc02d 66.6%);
+  clip-path: polygon(50% 0%, 100% 12%, 100% 75%, 50% 100%, 0% 75%, 0% 12%);
+  display: flex; align-items: center; justify-content: center;
+}
+.css-logo-shield::after {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 50%; height: 100%; background: rgba(0,0,0,0.25); pointer-events: none;
+}
+.css-logo-icon {
+  width: 14px; height: 14px; color: white; z-index: 2; margin-top: 2px;
+}
+.css-logo-text {
+  font-size: 1.15rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.2px;
+}
 
 .btn-new-chat {
   display: flex; align-items: center; gap: 10px;
