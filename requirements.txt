@@ -3,6 +3,7 @@ fastapi
 uvicorn[standard]
 python-multipart
 pydantic
+gradio
 
 # Environment variables
 python-dotenv
@@ -16,5 +17,3 @@ langchain-community
 
 # Document Parsing
 pymupdf
-rapidocr-onnxruntime
-faiss-cpu

@@ -39,7 +39,7 @@ tools = [search_law]
 llm = ChatOpenAI(
     openai_api_key=os.getenv("openai_api_key"),
     openai_api_base="https://openrouter.ai/api/v1",
-    model_name="openrouter/auto-beta",
+    model_name="openrouter/auto-beta",  # Vercel timeout warning: If this model is too slow, Vercel will time out.
 ).bind_tools(tools)
 
 def model_call(state:AgentState)->AgentState:
@@ -53,6 +53,8 @@ BEHAVIOR GUIDELINES:
 3. Casual Chat: If the user is just saying hello, asking how you are, or making small talk, DO NOT use the `search_law` tool. Just chat normally and warmly.
 4. Disclaimer: Occasionally remind users that you provide AI-assisted legal information, not formal legal representation.
 5. File Analysis: If the user attaches a lease document, you will receive a structured analysis of its clauses along with the full text. Incorporate this analysis into your response, explaining the key red flags to the user clearly. You do not need to restate the entire lease, just summarize the important legal risks and answer the user's specific question.
+6. Stay On Topic: You are STRICTLY a German Tenant Law assistant. If the user asks about off-topic subjects (like cooking recipes, programming, general history, or anything unrelated to renting in Germany), politely decline to answer and steer the conversation back to tenant law. Do not indulge off-topic requests.
+7. Conciseness (CRITICAL): Keep your answers EXTREMELY BRIEF and to the point. Do not write long paragraphs, do not over-explain, and do not provide unsolicited advice. Give the user exactly what they asked for in the shortest way possible. Use bullet points to break up information.
 
 Always format your responses cleanly using markdown (bullet points, bold text) to make complex legal concepts easy to read."""
       
@@ -78,7 +80,9 @@ graph.add_edge("tools", "model_call")
 # PRODUCTION NOTE: SQLite is great for local prototyping. 
 # For true production with multiple concurrent users, replace SqliteSaver 
 # with a Postgres Checkpointer (e.g., PostgresSaver) to prevent database locks.
-conn = sqlite3.connect("chat_history.db", check_same_thread=False)
+import os
+db_path = "/tmp/chat_history.db" if os.environ.get("VERCEL") else "chat_history.db"
+conn = sqlite3.connect(db_path, check_same_thread=False)
 memory = SqliteSaver(conn)
 # Compile the graph WITH memory
 app = graph.compile(checkpointer=memory)

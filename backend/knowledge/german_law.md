@@ -26,7 +26,7 @@ This document serves as the core knowledge base for analyzing German residential
 * **Definition:** Tenants can be made responsible for small repairs to items they frequently access (e.g., faucets, light switches, window handles).
 * **Legal Caps:** To be valid, the clause must contain strict financial caps:
   * Maximum per individual repair: Typically around **75 to 120 EUR**.
-  * Maximum per year: Typically capped at **8% of the annual cold rent** (or approx. 150-250 EUR total).
+  * Maximum per year: Typically capped at **6% to 8% of the annual cold rent** (or approx. 150-250 EUR total).
 * **Invalidity:** If the clause lacks these caps, or requires the tenant to contribute proportionally to larger repairs, the entire clause is invalid, and the landlord pays for all repairs.
 
 ## 5. Cosmetic Repairs (Schönheitsreparaturen)
@@ -35,24 +35,42 @@ This document serves as the core knowledge base for analyzing German residential
 * **Colors:** Landlords cannot dictate what colors a tenant paints the walls during the tenancy, but they can require neutral colors upon moving out.
 
 ## 6. Rent Increases & Control (Mietpreisbremse)
-* **Standard Increases:** Rent can generally only be increased to match the local comparative rent (Ortsübliche Vergleichsmiete) and cannot increase by more than 20% over 3 years (15% in cities with tight housing markets) - this is the "Kappungsgrenze". (§ 558 BGB)
-* **Mietpreisbremse:** In designated areas with tight housing markets, new lease rents cannot exceed the local comparative rent by more than 10%. Exceptions exist for new buildings or comprehensive modernizations.
-* **Index Rent (Indexmiete):** Rent can be tied to inflation. If so, standard increases based on comparative rent are excluded.
+* **Standard Increases:** Rent can generally only be increased to match the local comparative rent (Ortsübliche Vergleichsmiete) and cannot increase by more than 20% over 3 years (15% in tight housing markets) - this is the "Kappungsgrenze". (§ 558 BGB)
+* **Mietpreisbremse:** In designated tight markets, new lease rents cannot exceed the local comparative rent by more than 10%. Exceptions exist for new buildings or modernizations.
+* **Index Rent (Indexmiete):** Rent tied to inflation. Excludes standard increases.
+* **Graduated Rent (Staffelmiete):** Rent increases by specific amounts on specific dates. Must remain unchanged for at least one year between increases. Excludes standard comparative rent increases.
 
 ## 7. Pets (Haustiere)
 * **Small Pets:** Keeping small animals (e.g., hamsters, fish, birds) is always permitted and cannot be banned.
-* **Dogs and Cats:** A blanket ban on dogs and cats in a lease is **invalid**. Landlords must assess each request on a case-by-case basis. However, landlords can require tenants to seek permission first.
+* **Dogs and Cats:** A blanket ban on dogs and cats is **invalid**. Landlords must assess each request on a case-by-case basis. However, a clause requiring the tenant to ask for permission first is valid.
 
 ## 8. Subletting (Untervermietung)
 * **Partial Subletting:** If a tenant has a "legitimate interest" (e.g., financial need, roommate moved out), the landlord generally **cannot refuse permission** to sublet a portion of the apartment. (§ 553 BGB)
-* **Complete Subletting:** Subletting the entire apartment always requires the landlord's explicit consent.
+* **Complete Subletting:** Subletting the entire apartment always requires the landlord's explicit consent. Tourist rentals (Airbnb) usually require permission and are heavily regulated by city laws (Zweckentfremdungsverbot).
 
-## 9. Landlord Access Rights (Besichtigungsrecht)
+## 9. Landlord Access Rights & Keys (Besichtigungsrecht & Schlüssel)
 * **Privacy:** The landlord does not have a general right to keep a key or enter the apartment at will. Doing so is trespassing.
-* **Notice Required:** The landlord may only enter with a valid reason (e.g., maintenance, showing the apartment to prospective buyers/tenants) and must give reasonable advance notice (typically 24 to 48 hours).
+* **Lock Changing:** Tenants have the right to change the lock cylinders on their apartment doors during their tenancy, provided they reinstall the original locks upon moving out.
+* **Notice Required:** The landlord may only enter with a valid reason (e.g., maintenance, showing the apartment to prospective buyers/tenants) and must give reasonable advance notice (typically 24 to 48 hours, or up to 14 days for non-urgent matters).
 
 ## 10. Utility Costs (Nebenkosten)
 * **Billing Period:** The landlord must provide a detailed utility bill within **12 months** of the end of the accounting period. If they miss this deadline, they cannot demand additional payments (but must still refund overpayments).
 * **Flat Rates (Pauschale) vs. Advance Payments (Vorauszahlung):** 
   * Advance payments require a yearly settlement.
   * Flat rates do not require a settlement; the landlord bears the risk of higher costs.
+
+## 11. Mold & Rent Reduction (Schimmel & Mietminderung)
+* **Rent Reduction:** If the apartment has a significant defect (e.g., broken heating in winter, severe mold, construction noise), the tenant has the right to reduce rent proportionately until it is fixed. (§ 536 BGB)
+* **Mold:** Landlords often blame mold on improper ventilation. However, if the mold is caused by structural defects (e.g., poor insulation, leaking pipes), the landlord is responsible for fixing it and the tenant can reduce rent. Notice of the defect (Mängelanzeige) must be given to the landlord immediately.
+
+## 12. Heating Obligations (Heizpflicht)
+* **Heating Period:** Landlords must ensure the central heating works during the statutory heating period (usually October 1 to April 30).
+* **Minimum Temperatures:** The system must be capable of reaching at least 20-22°C in living areas during the day and 18°C at night. Clauses that dictate lower temperatures or force tenants to freeze are invalid.
+
+## 13. Quiet Hours (Ruhezeiten)
+* **Statutory Quiet Hours:** German law enforces strict quiet hours, typically between 22:00 (10 PM) and 06:00 (6 AM), as well as all day on Sundays and public holidays. During these times, noise must be kept to "room volume" (Zimmerlautstärke).
+* **House Rules:** Contracts may include additional house rules (Hausordnung) specifying afternoon quiet hours (Mittagsruhe), often from 13:00 to 15:00.
+
+## 14. Eviction & Personal Need (Eigenbedarf)
+* **Personal Need:** A landlord can terminate an open-ended contract if they or their close relatives (children, parents, siblings) genuinely need to move into the apartment. (§ 573 Abs. 2 Nr. 2 BGB)
+* **Hardship Clause:** Tenants can contest an Eigenbedarf termination if moving would constitute an unjustified hardship (e.g., severe illness, advanced pregnancy, advanced age, or inability to find replacement housing). (§ 574 BGB)
