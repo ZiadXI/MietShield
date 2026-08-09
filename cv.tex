@@ -1,0 +1,156 @@
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage[
+    ignoreheadfoot,
+    top=0.5 cm,
+    bottom=0.5 cm,
+    left=1.25 cm,
+    right=1.25 cm,
+    footskip=0.7 cm,
+]{geometry}
+\usepackage{titlesec, tabularx, array, xcolor, enumitem, fontawesome5, amsmath, hyperref, eso-pic, calc, bookmark, lastpage, changepage, ifthen, needspace, iftex}
+\definecolor{primaryColor}{RGB}{0, 0, 0}
+
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+\usepackage{charter}
+
+\raggedright
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0.15cm}
+\pagenumbering{gobble}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.2 cm}{0.1 cm}
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+
+\newenvironment{highlights}{\begin{itemize}[topsep=0.05 cm, parsep=0.05 cm, partopsep=0pt, itemsep=0pt, leftmargin=10pt]}{\end{itemize}}
+\newenvironment{onecolentry}{\begin{adjustwidth}{0 cm}{0 cm}}{\end{adjustwidth}}
+
+\newenvironment{twocolentry}[2][]{%
+    \onecolentry
+    \def\secondColumn{#2}%
+}{%
+    \unskip\hfill\secondColumn
+    \endonecolentry
+}
+
+\begin{document}
+
+%================ HEADER ==================
+\begin{center}
+    {\LARGE Ziad Kassem} \\
+    \vspace{4pt}
+    AI Engineer \textbar{} NLP \textbar{} Agentic AI \\[2pt]
+    Alexandria, Egypt \quad
+    \href{mailto:ziadxkassem123@gmail.com}{ziadxkassem123@gmail.com} \quad
+    +20 1068822131 \quad
+    \href{https://www.linkedin.com/in/ziad-kassem-85684021b/}{linkedin.com/in/ziadkassem} \quad
+    \href{https://github.com/ZiadXI}{github.com/ZiadXI}
+\end{center}
+
+%================ SUMMARY ==================
+\section{Summary}
+\begin{onecolentry}
+AI Engineer specializing in NLP, Large Language Models, and Agentic AI systems. Successfully engineered and delivered DrukPass --- an agentic AI platform for Bhutan's government agencies --- while developing deep domain expertise in LangGraph-based orchestration and multi-agent pipelines. Active open-source contributor with production experience deploying robust machine learning backends using FastAPI, Docker, and MLflow.
+\end{onecolentry}
+
+%================ EDUCATION ==================
+\section{Education}
+\begin{twocolentry}{2023 -- 2027}
+    \textbf{Faculty of Computers and Data Sciences, Alexandria University} -- B.Sc. Data Science
+\end{twocolentry}
+
+%================ EXPERIENCE ==================
+\section{Experience}
+
+\begin{twocolentry}{May 2026 -- Aug 2026}
+    \textbf{Omdena} -- AI Engineer --- \href{https://confirm.omdena.com/INd8oz\_}{Certificate}
+\end{twocolentry}
+\vspace{0.05 cm}
+\begin{onecolentry}
+\begin{highlights}
+\item Contributed to \textbf{DrukPass} --- an agentic AI platform automating tourism permit and compliance processing for Bhutan's government --- across 4 sprints, authoring \textbf{7 merged PRs} with code review.
+\item Architected the platform's \textbf{audit logging system}: Pydantic-validated event schemas (UUIDv4, UTC timestamps), append-only persistence, and automated audit trail generation on every state transition.
+\item Built the \textbf{visa processing engine} end-to-end: state machine with transition validation, human-review escalation, approval/rejection handlers with immutability guarantees, and a secure resubmission flow with field-level allowlisting.
+\item Implemented the \textbf{central event dispatcher} following domain-driven design principles, coordinating payload validation, business-rule enforcement, and a readiness gate synchronizing parallel workflows.
+\item Consolidated \textbf{5 fragmented test suites} into a single validated module (27 passing tests) and resolved schema alignment bugs across visa and compliance workflows.
+\end{highlights}
+\end{onecolentry}
+
+\vspace{0.05cm}
+
+\begin{twocolentry}{Feb 2026 -- May 2026}
+    \textbf{MalariaGEN} -- Open Source Contributor --- \href{https://github.com/malariagen/malariagen-data-python/issues?q=is:pr+author:@ZiadXI}{GitHub}
+\end{twocolentry}
+\vspace{0.05 cm}
+\begin{onecolentry}
+\begin{highlights}
+\item Engineered Grantham distance and Sneath index metrics within \texttt{malariagen-data-python} to quantitatively evaluate amino-acid substitution effects in SNP variants.
+\item Introduced \texttt{SYNONYMOUS\_START} and \texttt{SYNONYMOUS\_STOP} variant-effect classifications, resolving genomic annotation gaps while managing API backward compatibility via deprecation warnings.
+\end{highlights}
+\end{onecolentry}
+
+\vspace{0.05cm}
+
+\begin{twocolentry}{Aug 2025 -- Nov 2025}
+    \textbf{Samsung Innovation Campus} -- AI Trainee --- \href{https://github.com/ZiadXI/Diabetic-Retinopathy-XAI-Detector}{GitHub}
+\end{twocolentry}
+\vspace{0.05 cm}
+\begin{onecolentry}
+\begin{highlights}
+\item Built a Diabetic Retinopathy XAI detector using EfficientNetV2-B0 (PyTorch) with a two-stage cascade model, achieving \textbf{97.8\% accuracy} and \textbf{95.6\% Cohen's Kappa} on APTOS 2019.
+\item Implemented Grad-CAM explainability and deployed the full pipeline via FastAPI and Docker.
+\end{highlights}
+\end{onecolentry}
+
+%================ PROJECTS ==================
+\section{Projects}
+
+\begin{onecolentry}
+\textbf{Story GPT --- Custom LLaMA-style LLM From Scratch} --- \href{https://github.com/ZiadXI/StoryGPT}{GitHub}
+\begin{highlights}
+\item Pre-trained a \textasciitilde50M parameter decoder-only transformer in PyTorch on TinyStories, implementing RoPE, GQA, RMSNorm, and SwiGLU from scratch alongside a custom BPE tokenizer.
+\item Optimized the GPU training loop with cosine LR scheduling and gradient clipping for stable convergence.
+\end{highlights}
+\end{onecolentry}
+
+\vspace{0.05cm}
+
+\begin{onecolentry}
+\textbf{Telco Customer Churn --- MLOps Pipeline} --- \href{https://github.com/ZiadXI/telco-customer-churn}{GitHub}
+\begin{highlights}
+\item End-to-end churn prediction pipeline with Pydantic validation, MLflow experiment tracking, and a FastAPI + Gradio interface deployed via Docker with automated CI/CD using GitHub Actions.
+\end{highlights}
+\end{onecolentry}
+
+\vspace{0.05cm}
+
+\begin{onecolentry}
+\textbf{MietShield --- AI Tenant Rights Assistant} --- \href{https://github.com/ZiadXI/MietShield}{GitHub}
+\begin{highlights}
+\item Architected a two-agent LangGraph pipeline: a structured-output \textbf{Lease Analyzer} agent (PyMuPDF + Pydantic) that extracts and classifies lease clauses (Red Flag / Needs Review / Safe) with BGB article references, feeding a persistent conversational agent via SQLite memory.
+\item Implemented a \textbf{RAG pipeline} using FAISS vector store and sentence-transformers to semantically retrieve German tenancy law articles, grounding responses in verified legal sources and eliminating hallucinations.
+\item Deployed on Vercel Serverless (FastAPI backend + vanilla JS frontend on a single domain); privacy-first architecture processes all leases entirely in RAM with zero disk persistence.
+\end{highlights}
+\end{onecolentry}
+
+%================ SKILLS ==================
+\section{Skills}
+\begin{onecolentry}
+\textbf{AI \& NLP:} Large Language Models, Transformer Architecture, Model Fine-Tuning, Agentic AI, PyTorch \\
+\textbf{Agentic \& Systems:} LangGraph, Multi-Agent Pipelines, Event-Driven Architecture, State Machines, Domain-Driven Design \\
+\textbf{MLOps \& Data:} MLflow, Pydantic, Pandas, NumPy, Scikit-learn, CI/CD \\
+\textbf{Backend \& DevOps:} Python, FastAPI, Docker, GitHub Actions, AWS, Node.js, C++, SQL \\
+\textbf{Achievements:} ECPC Qualifications 2025 -- Rank 141 \quad\textbullet\quad ICPC Kickoff 2025 \quad\textbullet\quad AWS Cloud Foundations Badge
+\end{onecolentry}
+
+\end{document}
