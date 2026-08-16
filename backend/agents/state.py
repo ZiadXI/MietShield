@@ -12,8 +12,10 @@ from backend.utils.pdf_parser import extract_text_from_pdf
 from backend.api.schemas import LeaseAnalyzerResponse
 from langgraph.checkpoint.sqlite import SqliteSaver
 import sqlite3
-
-
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_community.document_loaders import TextLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from typing import Annotated
 from dotenv import load_dotenv
 
@@ -25,14 +27,23 @@ class AgentState(TypedDict):
     lease_text: str
 
 
+# Initialize FAISS Vector Database at startup
+file_path = os.path.join(os.path.dirname(__file__), "..", "knowledge", "german_law.md")
+loader = TextLoader(file_path, encoding="utf-8")
+docs = loader.load()
+chunks = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50).split_documents(docs)
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+vector_db = FAISS.from_documents(chunks, embeddings)
+retriever = vector_db.as_retriever(search_kwargs={"k": 3})
+
+def retrieve_law(query: str) -> str:
+    retrieved_docs = retriever.invoke(query)
+    return "\n\n".join([doc.page_content for doc in retrieved_docs])
+
 @tool
-def search_law(state:AgentState):
-    """Call this tool to search the German Tenancy Law database for rules and regulations."""
-    # Ensure correct path to your knowledge file
-    file_path = os.path.join(os.path.dirname(__file__), "..", "knowledge", "german_law.md")
-    with open(file_path, "r", encoding="utf-8") as file:
-        law_text = file.read()
-    return law_text   
+def search_law(query: str):
+    """Call this tool to search the German Tenancy Law database for rules and regulations. Input should be a specific search query."""
+    return retrieve_law(query)
 
 tools = [search_law]
 

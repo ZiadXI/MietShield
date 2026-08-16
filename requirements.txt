@@ -17,3 +17,9 @@ langchain-community
 
 # Document Parsing
 pymupdf
+
+# RAG & Vector Database
+faiss-cpu
+langchain-huggingface
+sentence-transformers
+langchain-text-splitters
