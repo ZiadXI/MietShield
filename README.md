@@ -10,6 +10,8 @@
 
 ---
 
+> **⚡ RAG Feature Branch:** A more advanced version using a **FAISS Vector Database + HuggingFace sentence-transformers** for semantic law retrieval is available on the [eat/rag-search](https://github.com/ZiadXI/MietShield/tree/feat/rag-search) branch. The main deployment uses a simpler approach for Vercel serverless compatibility.
+
 ## ✨ Features
 
 - 💬 **Conversational AI:** Ask questions about your rights, notice periods, and deposit rules.
